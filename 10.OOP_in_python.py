@@ -39,6 +39,8 @@ student1.print_details()
 student2.print_details()
 student3.print_details()
 
+#Inheritance in Python
+
 
 '''
 Task
@@ -63,3 +65,42 @@ class laptop(Student):
 LOQ= laptop("Bhawesh", "1RV18CS001", "Python", "Intel i5", "8GB", "NVIDIA GTX 1650", "Dell")
 LOQ.print_details()
 print(f'''Processor: {LOQ.processor}, RAM: {LOQ.ram}, GPU: {LOQ.gpu}, Brand: {LOQ.brand}''')
+
+
+#polymorphism in Python
+
+class DOG:
+    def sound(self):
+        print("Bhow")
+class CAT:
+    def sound(self):
+        print("Meow")
+def make_sound(animal):
+    animal.sound()
+C=CAT()    
+D=DOG()
+make_sound(C)  # This will print "Meow"
+make_sound(D)  # This will print "Bhow"
+
+class parent:
+    def show (self):
+        print("Parents Method")
+
+class child(parent):
+    def show(self):
+        print("Child Method")
+        
+obj= child()
+obj.show()  # This will print "Child Method" due to method overriding 
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+p1 = Point(1, 2)
+p2 = Point(3, 4)
+p3 = p1 + p2  # This will call the __add__ method
+print(p3.x, p3.y)  # This will print "4 6"
