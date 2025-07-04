@@ -2,4 +2,8 @@ SHAK SHAK SHOOOO
 SHAK SHEK SHOOOO
 HEKALA HABIBI NEKIMEHI BO 
 SHAK SHAK SHOOOO
-The song is a mix of Arabic and Turkish, and the lyrics are a mix of love and longing
+The song is a mix of Arabic and Turkish, and the lyrics are a mix of love and longin
+
+git add . 
+git commit -m "python"
+git push
