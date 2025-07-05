@@ -1,21 +1,41 @@
 import sqlite3
 
-# Create the database or connect if it already exists
+# Connect to database
 db = sqlite3.connect("database.db")
-cursorobj = db.cursor()  # Create a cursor object to execute SQL commands
+cursorobj = db.cursor()
 
-# Create table if it doesn't exist
-cursorobj.execute('''
-    CREATE TABLE IF NOT EXISTS students(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        age INTEGER,
-        grade TEXT
-    )
-''')
+# New student records to insert
+student_records = [
+    ("GEORGE", 20, "B"),
+    ("HELEN", 21, "A"),
+    ("IVAN", 22, "C"),
+    ("JULIA", 20, "B"),
+    ("KEVIN", 19, "A"),
+    ("LISA", 18, "B"),
+    ("MIKE", 21, "C"),
+    ("NINA", 22, "A"),
+    ("OSCAR", 20, "B"),
+    ("PAULA", 19, "C")
+]
 
-# Save the changes
+# Insert into table
+cursorobj.executemany("INSERT INTO students(name, age, grade) VALUES (?, ?, ?)", student_records)
+
+# Save changes
+db.commit()
+#delete an element from the table
+cursorobj.execute("DELETE FROM students WHERE name = 'OSCAR'")
+db.commit()
+# modify an element in the table
+cursorobj.execute("UPDATE students SET grade = 'A' WHERE name = 'HELEN'")
 db.commit()
 
-# Optional: close the database connection
+# Fetch and display all records
+cursorobj.execute("SELECT * FROM students")
+data = cursorobj.fetchall()
+
+for i in data:
+    print(i)
+
+# Close connection
 db.close()
