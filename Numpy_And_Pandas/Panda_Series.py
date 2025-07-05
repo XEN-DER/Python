@@ -1,6 +1,7 @@
 import pandas as pd
+import numpy as np
 
-# Creating Series
+'''# Creating Series
 s1 = pd.Series([10, 20, 30, 40])
 s2 = pd.Series([100, 200, 300], index=['a', 'b', 'c'])
 s3 = pd.Series({'x': 5, 'y': 10, 'z': 15})
@@ -36,4 +37,41 @@ print(s*10)
 print(s**2)
 
 s=pd.Series([5,10,15,20])
-print(s[s>10])
+print(s[s>10])'''
+
+# Create Series with a NaN and a string
+s = pd.Series([10, "Nope", 30, np.nan])
+
+# Check for null and non-null values
+print("Is Null:\n", s.isnull())
+print("\nIs Not Null:\n", s.notnull())
+
+# Fill NaN with 0 (returns a new Series)
+s_filled = s.fillna(0)
+print("\nAfter fillna:\n", s_filled)
+
+# Drop NaN values (returns a new Series)
+s_dropped = s.dropna()
+print("\nAfter dropna:\n", s_dropped)
+
+s=pd.Series([10,20,30,40,50])
+print(s.sum())
+print(s.mean())
+print(s.min(),s.max())
+print(s.std())
+print(s.describe())
+
+s=pd.Series([30,10,40,20],index=['d','b','a','c'])
+print(s.sort_values())
+print(s.sort_index())
+print(s.rank())
+
+names=pd.Series(["Alice","bob","charlie","dave"])
+print(names.str.upper())
+print(names.str.lower())
+print(names.str.capitalize())
+print(names.str.contains("a"))
+
+s1=pd.Series([10,20,30],index=['a','b','c'])
+s2=pd.Series([5,10,15], index=['b''c','d'])
+print(s1+s2)
